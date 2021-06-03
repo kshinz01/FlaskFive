@@ -16,7 +16,6 @@ class UserRegister(Resource):
                         help="This field cannot be left blank!"
                         )
 
-    @jwt_required()
     def post(self):
         data = UserRegister.parser.parse_args()
 
@@ -32,4 +31,4 @@ class UserRegister(Resource):
 class UserList(Resource):
     @jwt_required()
     def get(self):
-        return {'stores': [x.json() for x in UserModel.query.all()] }
+        return {'users': [x.json() for x in UserModel.query.all()] }
